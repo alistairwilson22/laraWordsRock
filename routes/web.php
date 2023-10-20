@@ -3,6 +3,8 @@
 use Database\Factories\UserFactory;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\WordController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -21,8 +23,14 @@ Route::get('/', function () {
 
 Route::get('/game', function () {
     return view('game.index');
-});
+})->middleware('auth');;
 
+// Game
+Route::post('/user/say', [UserController::class, 'sayWord'])->middleware('auth');
+
+Route::post('/user/guess', [UserController::class, 'guessWord'])->middleware('auth');
+
+Route::get('/word/random/{level}', [WordController::class, 'getRandomWord'])->name('randomWord')->middleware('auth');
 
 // Users
 Route::get('/register', [UserController::class, 'create'])->middleware('guest');

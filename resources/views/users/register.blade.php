@@ -1,7 +1,7 @@
 <x-layout.layout>
     <div class="mx-4">
         <div class="bg-gray-50 rounded max-w-lg mx-auto mt-6 mb-6">
-            <header class="text-center bg-violet-700 p-4">
+            <header class="text-center bg-sky-700 p-4">
                 <h2 class="text-2xl font-bold uppercase mb-1">
                     Register
                 </h2>
@@ -39,9 +39,6 @@
                     @error('email')
                     <p class="text-red-500 text-xs mt-1">{{$message}}</p>
                     @enderror
-                    <p class="text-red-500 text-xs mt-1">
-                        Please enter a valid email
-                    </p>
                 </div>
 
                 <div class="mb-6">

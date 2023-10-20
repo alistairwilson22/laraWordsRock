@@ -1,4 +1,4 @@
-<nav class="flex justify-between items-center bg-violet-700 text-white p-4">
+<nav class="flex justify-between items-center bg-sky-700 text-white p-4">
     <a href="/"
         ><img class="w-24" src="{{asset('images/logo.png')}}" alt="" class="logo"
     /></a>
@@ -6,8 +6,14 @@
         @auth
         <li>
             <span class="font-bold uppercase">
-                Welcome {{auth()->user()->name}}
+                {{auth()->user()->name}}
             </span>
+        </li>
+        <li>
+            <i class="fa-solid fa-award"></i> {{auth()->user()->level}}
+        </li>
+        <li>
+            <i class="fa-solid fa-coins"></i> {{auth()->user()->coins}}
         </li>
         <li>
             <a href="/game" class="hover:text-laravel"
