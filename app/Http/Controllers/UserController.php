@@ -16,7 +16,8 @@ class UserController extends Controller
 {
     public function create()
     {
-        return view('users.register');
+        $levels = Word::distinct()->pluck('level');
+        return view('users.register', compact('levels'));
     }
 
     public function store(Request $request)
@@ -25,6 +26,7 @@ class UserController extends Controller
             'name' => ['required', 'min:3'],
             'email' => ['required', 'email', Rule::unique('users', 'email')],
             'password' => 'required|confirmed|min:6',
+            'level' => 'required'
         ]);
 
         $formFields['password'] = bcrypt($formFields['password']);
@@ -73,9 +75,9 @@ class UserController extends Controller
 
         if ($user && is_null($user->next_word)) {
             $this->nextWord();
-            return back()->with("message", "Next word tried");
+            return back()->with("message", "You can start playing now!");
         } else {
-            return back()->with("message", "don't want to do another word");
+            return back()->with("message", "You need to spell this word correctly first.");
         }
     }
 

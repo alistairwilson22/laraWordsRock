@@ -23,7 +23,7 @@ Route::get('/', function () {
 
 Route::get('/game', function () {
     return view('game.index');
-})->middleware('auth');;
+})->name('game.index')->middleware('auth');;
 
 // Game
 Route::post('/user/say', [UserController::class, 'sayWord'])->middleware('auth');

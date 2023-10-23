@@ -42,21 +42,6 @@
                 </div>
 
                 <div class="mb-6">
-                    <label for="level" class="inline-block text-lg mb-2"
-                        >Level</label>
-                    <select name="level" class="border border-gray-200 rounded p-2 w-full" id="level">
-                        <option value="{{old('level')}}">Select a level</option>
-                        @foreach($levels as $level)
-                            <option value="{{ $level }}">{{ $level }}</option>
-                        @endforeach
-                    </select>
-
-                    @error('level')
-                    <p class="text-red-500 text-xs mt-1">{{$message}}</p>
-                    @enderror
-                </div>
-
-                <div class="mb-6">
                     <label
                         for="password"
                         class="inline-block text-lg mb-2"
