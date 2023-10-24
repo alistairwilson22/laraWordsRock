@@ -41,4 +41,8 @@ Route::post('logout', [UserController::class, 'logout'])->middleware('auth');
 
 Route::get('/login', [UserController::class, 'login'])->name('login')->middleware('guest');
 
+Route::get('/profile', [UserController::class, 'profile'])->middleware('auth');
+
 Route::post('/users/authenticate', [UserController::class, 'authenticate']);
+
+Route::patch('/users/update/{id}', [UserController::class, 'update']);

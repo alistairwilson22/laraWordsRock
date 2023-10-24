@@ -69,6 +69,24 @@ class UserController extends Controller
         }
     }
 
+    public function profile(Request $request)
+    {
+        $levels = Word::distinct()->pluck('level');
+        return view('users.profile', compact('levels'));
+    }
+
+    public function update($id, Request $request)
+    {
+        $formFields = $request->validate([
+            'name' => ['required', 'min:3'],
+            'level' => 'required'
+        ]);
+
+        $user = User::where("id", $id)->update($formFields);
+
+        return redirect('/profile')->with('message', 'User updated');
+    }
+
     public function sayWord(Request $request)
     {
         $user = Auth::user();
@@ -87,11 +105,12 @@ class UserController extends Controller
         $user = Auth::user();
         //dd($request->guess);
         if ($request->guess == $user->next_word) {
-            $user->coins += $user->coins_for_next_word;
+            $user->coins_remaining += $user->coins_for_next_word;
+            $user->coins_total += $user->coins_for_next_word;
             $user->coins_for_next_word = 8;
             $user->save();
             $this->nextWord();
-            return back()->with("message", "Well done you get coins.");
+            return back()->with("message", "Well done you've won coins.");
         } else {
             $user->coins_for_next_word = ceil($user->coins_for_next_word / 2);
             $user->save();

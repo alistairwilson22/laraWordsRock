@@ -22,7 +22,8 @@ return new class extends Migration
             $table->integer('level')->default(2);
             $table->string('next_word')->nullable()->default(null);
             $table->integer('coins_for_next_word')->default(8);
-            $table->integer('coins')->default(0);
+            $table->integer('coins_total')->default(0);
+            $table->integer('coins_remaining')->default(0);
         });
     }
 

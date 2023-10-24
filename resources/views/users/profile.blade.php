@@ -3,12 +3,13 @@
         <div class="bg-gray-50 rounded max-w-lg mx-auto mt-6 mb-6">
             <header class="text-center bg-sky-700 p-4">
                 <h2 class="text-2xl font-bold uppercase mb-1">
-                    Register
+                    Profile
                 </h2>
             </header>
 
-            <form action="/users" method="POST" class="p-6 text-black">
+            <form action="/users/update/{{auth()->user()->id}}" method="POST" class="p-6 text-black">
                 @csrf
+                @method('PATCH')
                 <div class="mb-6">
                     <label for="name" class="inline-block text-lg mb-2">
                         Name
@@ -17,7 +18,7 @@
                         type="text"
                         class="border border-gray-200 rounded p-2 w-full"
                         name="name"
-                        value="{{old('name')}}"
+                        value="{{auth()->user()->name}}"
 
                     />
 
@@ -31,9 +32,10 @@
                         >Email</label>
                     <input
                         type="email"
-                        class="border border-gray-200 rounded p-2 w-full"
+                        class="border border-gray-200 bg-slate-200 rounded p-2 w-full"
                         name="email"
-                        value="{{old('email')}}"
+                        value="{{auth()->user()->email}}"
+                        disabled
                     />
 
                     @error('email')
@@ -42,35 +44,16 @@
                 </div>
 
                 <div class="mb-6">
-                    <label
-                        for="password"
-                        class="inline-block text-lg mb-2"
-                    >
-                        Password
-                    </label>
-                    <input
-                        type="password"
-                        class="border border-gray-200 rounded p-2 w-full"
-                        name="password"
-                    />
-                    @error('password')
-                    <p class="text-red-500 text-xs mt-1">{{$message}}</p>
-                    @enderror
-                </div>
+                    <label for="level" class="inline-block text-lg mb-2"
+                        >Level</label>
+                    <select name="level" class="border border-gray-200 bg-white rounded p-2 w-full" id="level">
+                        <option value="{{auth()->user()->level}}">{{auth()->user()->level}}</option>
+                        @foreach($levels as $level)
+                            <option value="{{ $level }}">{{ $level }}</option>
+                        @endforeach
+                    </select>
 
-                <div class="mb-6">
-                    <label
-                        for="password_confirmation"
-                        class="inline-block text-lg mb-2"
-                    >
-                        Confirm Password
-                    </label>
-                    <input
-                        type="password"
-                        class="border border-gray-200 rounded p-2 w-full"
-                        name="password_confirmation"
-                    />
-                    @error('password_confirmation')
+                    @error('level')
                     <p class="text-red-500 text-xs mt-1">{{$message}}</p>
                     @enderror
                 </div>
@@ -79,14 +62,14 @@
                     <button
                         type="submit"
                         class="bg-laravel text-white rounded py-2 px-4 bg-black">
-                        Sign Up
+                        Update
                     </button>
                 </div>
 
                 <div class="mt-8">
                     <p>
-                        Already have an account?
-                        <a href="/login" class="text-laravel">Login</a>
+                        Want to start playing?
+                        <a href="/game" class="text-laravel">Play Now</a>
                     </p>
                 </div>
             </form>

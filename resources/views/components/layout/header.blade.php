@@ -1,19 +1,19 @@
 <nav class="flex justify-between items-center bg-sky-700 text-white p-4">
     <a href="/"
-        ><img class="w-24" src="{{asset('images/logo.png')}}" alt="" class="logo"
+        ><img class="w-48" src="{{asset('WordsRockLogo.png')}}" alt="" class="logo"
     /></a>
     <ul class="flex space-x-6 mr-6 text-lg">
         @auth
         <li>
-            <span class="font-bold uppercase">
-                {{auth()->user()->name}}
-            </span>
+            <a href="/profile" class="hover:text-laravel font-bold uppercase">
+                <i class="fa-solid fa-user"></i> {{auth()->user()->name}}
+            </a>
         </li>
         <li>
             <i class="fa-solid fa-award"></i> {{auth()->user()->level}}
         </li>
         <li>
-            <i class="fa-solid fa-coins"></i> {{auth()->user()->coins}}
+            <i class="fa-solid fa-coins"></i> {{auth()->user()->coins_remaining}}
         </li>
         <li>
             <a href="/game" class="hover:text-laravel"

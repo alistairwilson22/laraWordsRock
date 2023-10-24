@@ -31,7 +31,7 @@
                 @csrf
                 <button 
                     type="submit"
-                    class="bg-laravel rounded bg-green-300 text-white p-4 mt-4">
+                    class="bg-laravel rounded bg-orange-700 text-white p-4 mt-4">
                     <i class="fa-solid fa-play"></i> Let's start
                 </button>
             </form>

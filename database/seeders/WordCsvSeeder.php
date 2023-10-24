@@ -15,7 +15,7 @@ class WordCsvSeeder extends Seeder
     {
         Word::truncate();
 
-        $csvFile = fopen(base_path("storage/app/word_list_data.csv"), "r");
+        $csvFile = fopen(storage_path("app/data/word_list_data.csv"), "r");
 
         $firstline = true;
 
