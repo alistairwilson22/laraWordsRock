@@ -4,6 +4,7 @@ use Database\Factories\UserFactory;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WordController;
+use App\Http\Controllers\PokemonController;
 
 
 /*
@@ -32,6 +33,10 @@ Route::post('/user/guess', [UserController::class, 'guessWord'])->middleware('au
 
 Route::get('/word/random/{level}', [WordController::class, 'getRandomWord'])->name('randomWord')->middleware('auth');
 
+Route::get('/leaderboard', [UserController::class, 'leaderboard'])->name('leaderboard')->middleware('auth');
+
+Route::get('/pokedex', [PokemonController::class, 'pokedex'])->name('pokedex');
+
 // Users
 Route::get('/register', [UserController::class, 'create'])->middleware('guest');
 
@@ -46,3 +51,7 @@ Route::get('/profile', [UserController::class, 'profile'])->middleware('auth');
 Route::post('/users/authenticate', [UserController::class, 'authenticate']);
 
 Route::patch('/users/update/{id}', [UserController::class, 'update']);
+
+Route::get('/pokedex/{id}', [PokemonController::class, 'user_pokedex'])->name('user_pokedex');
+
+Route::post('pokemon/{id}/buy', [PokemonController::class, 'buy'])->middleware('auth');

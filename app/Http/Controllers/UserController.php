@@ -87,6 +87,19 @@ class UserController extends Controller
         return redirect('/profile')->with('message', 'User updated');
     }
 
+    public function leaderboard()
+    {
+        $per_page = 20;
+
+        $userCoinsTotal = Auth::user()->coins_total;
+
+        $userRank = User::where('coins_total', '>', $userCoinsTotal)->count() + 1;
+
+        $leaderboard = User::orderBy('coins_total', 'desc')->paginate($per_page);
+
+        return view('game.leaderboard', compact('leaderboard', 'userRank'));
+    }
+
     public function sayWord(Request $request)
     {
         $user = Auth::user();

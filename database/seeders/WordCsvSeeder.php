@@ -27,7 +27,7 @@ class WordCsvSeeder extends Seeder
                     'id' => $data['0'],
                     'word' => $data['1'],
                     'level' => $data['2']
-                ]);    
+                ]);  
 
             }
 

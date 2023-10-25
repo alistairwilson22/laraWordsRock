@@ -10,7 +10,14 @@
             </a>
         </li>
         <li>
-            <i class="fa-solid fa-award"></i> {{auth()->user()->level}}
+            <a href="/leaderboard" class="hover:text-laravel">
+                <i class="fa-solid fa-award"></i> {{auth()->user()->level}}
+            </a>
+        </li>
+        <li>
+            <a href="/pokedex" class="hover:text-laravel">
+                <img class="inline-block w-5 mb-2" src="{{asset('pokeball.png')}}" /> {{auth()->user()->pokemons->count()}}
+            </a>
         </li>
         <li>
             <i class="fa-solid fa-coins"></i> {{auth()->user()->coins_remaining}}
