@@ -22,7 +22,7 @@
                     speech.rate = 0.8;
 
                     document.querySelector("#say-word").addEventListener("click", () => {
-                        speech.text = document.querySelector("#word-to-say").innerHTML;
+                        speech.text = @json(auth()->user()->next_word);
                         window.speechSynthesis.speak(speech);
                     });
                 </script>
@@ -61,8 +61,6 @@
                 <div x-show="open" @click.outside="open = false">
                 </div>
             </div>
-            @else
-            <span id="word-to-say" class="hidden">{{auth()->user()->next_word}}</span>
             @endif
 
         </div>

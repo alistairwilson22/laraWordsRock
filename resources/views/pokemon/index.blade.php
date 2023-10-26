@@ -6,6 +6,7 @@
             </h2>
         </header>
         <div class="text-center m-4">
+            @include('partials._search')
             <div class="justify-center grid">
                 <div class="grid grid-cols-3 md:grid-cols-6">
                     @foreach ($pokemon as $p)

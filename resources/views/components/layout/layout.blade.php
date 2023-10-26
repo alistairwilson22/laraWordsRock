@@ -21,12 +21,12 @@
             referrerpolicy="no-referrer"
         />
         <script src="//unpkg.com/alpinejs" defer></script>
-        <script src="https://cdn.tailwindcss.com"></script>
+        @vite('resources/css/app.css')
     
     </head>
-    <body class="antialiased font-['Roboto']">
+    <body class="antialiased font-sans">
         <x-layout.header />
-        <main class="justify-center flex min-h-screen items-center bg-[url('/assets/jazzy-background.jpg')] bg-cover text-white">
+        <main class="justify-center flex min-h-screen items-center bg-space bg-cover text-white">
             {{$slot}}
         </main>
         <x-layout.footer />

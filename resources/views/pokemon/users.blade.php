@@ -9,10 +9,14 @@
             <div class="justify-center grid">
                 <div class="grid grid-cols-3 md:grid-cols-6">
                     @foreach ($pokemon as $p)
-                        <div class="m-4">
-                            <img src="../{{$p->image}}" class="@unless($user->pokemons->find($p)) opacity-10 @endunless" />
-                            <p>{{ $p->name }}</p>
-                            <p>{{ $p->classification }}</p>
+                        <div class="m-4 @unless($user->pokemons->find($p)) opacity-10 @endunless">
+                            <img src="../{{$p->image}}"/>
+                            <p>
+                                {{ $p->name }}
+                            </p>
+                            <p>
+                                {{ $p->classification }}
+                            </p>
                         </div>
                     @endforeach
                 </div>
