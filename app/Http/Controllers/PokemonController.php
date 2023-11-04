@@ -25,10 +25,11 @@ class PokemonController extends Controller
 
     public function buy($id) 
     {
+        
         $user = Auth::user();
         $pokemon = Pokemon::find($id);
 
-        if($user->coins_remaining > $pokemon->coins) {
+        if($user->coins_remaining >= $pokemon->coins) {
             $user->coins_remaining -= $pokemon->coins;
             $user->pokemons()->attach($pokemon->id);
             $user->save();

@@ -11,6 +11,9 @@ To get started:
 * Add database credentials  
 * Run php artisan migrate  
 * Run php artisan db:seed class=WordCsvSeeder  
-* Run php serve  
+* Run php artisan db:seed class=PokemonSeeder  
+* Run php artisan serve  
 * Register a user  
 * Go to play game  
+
+Credits: background from https://wallpaperaccess.com/, pokemon data from Kaggle https://www.kaggle.com/datasets/rounakbanik/pokemon and also https://www.kaggle.com/datasets/kvpratama/pokemon-images-dataset/

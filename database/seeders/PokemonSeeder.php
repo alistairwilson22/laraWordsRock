@@ -13,8 +13,6 @@ class PokemonSeeder extends Seeder
      */
     public function run(): void
     {
-        Pokemon::truncate();
-
         $csvFile = fopen(storage_path("app/data/pokemon.csv"), "r");
 
         $firstline = true;
