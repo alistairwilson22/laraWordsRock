@@ -1,5 +1,5 @@
 <!-- Search -->
-<form action="/pokedex" method="GET">
+<form action="" method="GET">
     <div class="relative m-4 rounded-lg">
         <div class="absolute top-4 left-3">
             <i
@@ -22,12 +22,9 @@
         </div>
         <div class="text-right mt-[10px]">
             <p>Generation:
-                <a href="/pokedex?generation=1" class="text-red-500" >1</a>
-                <a href="/pokedex?generation=2" class="text-red-500" >2</a>
-                <a href="/pokedex?generation=3" class="text-red-500" >3</a>
-                <a href="/pokedex?generation=4" class="text-red-500" >4</a>
-                <a href="/pokedex?generation=5" class="text-red-500" >5</a>
-                <a href="/pokedex?generation=6" class="text-red-500" >6</a>
+                @for ($i = 1; $i <= 6; $i++)
+                <a href="?generation={{$i}}" class="text-red-500">{{$i}}</a>
+                @endfor
             </p>
         </div>
     </div>

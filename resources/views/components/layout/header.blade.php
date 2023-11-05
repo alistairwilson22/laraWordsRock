@@ -1,7 +1,7 @@
 <nav class="flex justify-between items-center bg-sky-700 text-white p-4">
-    <a href="/"
-        ><img class="w-48" src="{{asset('WordsRockLogo.png')}}" alt="" class="logo"
-    /></a>
+    <a href="/">
+        <img class="w-48" src="{{asset('WordsRockLogo.png')}}" alt="" class="logo"/>
+    </a>
     <ul class="flex space-x-6 mr-6 text-lg">
         @auth
         <li>
@@ -46,6 +46,5 @@
             >
         </li>
         @endauth
-
     </ul>
 </nav>

@@ -35,7 +35,7 @@ Route::get('/word/random/{level}', [WordController::class, 'getRandomWord'])->na
 
 Route::get('/leaderboard', [UserController::class, 'leaderboard'])->name('leaderboard')->middleware('auth');
 
-Route::get('/pokedex', [PokemonController::class, 'pokedex'])->name('pokedex');
+Route::get('/pokedex', [PokemonController::class, 'pokedex'])->name('pokedex')->middleware('auth');
 
 // Users
 Route::get('/register', [UserController::class, 'create'])->middleware('guest');
@@ -52,6 +52,6 @@ Route::post('/users/authenticate', [UserController::class, 'authenticate']);
 
 Route::patch('/users/update/{id}', [UserController::class, 'update']);
 
-Route::get('/pokedex/{id}', [PokemonController::class, 'user_pokedex'])->name('user_pokedex');
+Route::get('/pokedex/{id}', [PokemonController::class, 'user_pokedex'])->name('user_pokedex')->middleware('auth');
 
 Route::post('pokemon/{id}/buy', [PokemonController::class, 'buy'])->middleware('auth');

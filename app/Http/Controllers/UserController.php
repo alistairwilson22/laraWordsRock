@@ -117,7 +117,7 @@ class UserController extends Controller
 
         $user = Auth::user();
         //dd($request->guess);
-        if ($request->guess == $user->next_word) {
+        if ( strtolower(trim($request->guess)) == strtolower(trim($user->next_word)) ) {
             $user->coins_remaining += $user->coins_for_next_word;
             $user->coins_total += $user->coins_for_next_word;
             $user->coins_for_next_word = 8;

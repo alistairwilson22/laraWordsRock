@@ -19,7 +19,8 @@ class PokemonController extends Controller
     public function user_pokedex($id) 
     {
         $user = User::find($id);
-        $pokemon = Pokemon::where('generation', 1)->orderBy('pokedex_number')->get();
+        $filters = request(['type', 'generation', 'search']);
+        $pokemon = Pokemon::orderBy('id')->filter($filters)->get();
         return view('pokemon.users', compact('pokemon', 'user'));
     }
 
