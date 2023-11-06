@@ -18,12 +18,12 @@
                     let speech = new SpeechSynthesisUtterance();
                     speech.lang = "en";
                     voices = window.speechSynthesis.getVoices();
-                    let rotate_index = voices.length;
+                    let rotate_index = parseInt(voices.length);
                     speech.rate = 0.8;
 
                     document.querySelector("#say-word").addEventListener("click", () => {
                         rotate_index += 1;
-                        voice_rotation = rotate_index % voices.length;
+                        voice_rotation = parseInt(rotate_index) % parseInt(voices.length);
                         speech.voice = voices[voice_rotation];
                         speech.text = @json(auth()->user()->next_word);
                         window.speechSynthesis.speak(speech);
