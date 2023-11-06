@@ -15,16 +15,16 @@
                     <i class="fa-solid fa-comment"></i> Say Word
                 </button>
                 <script>
-                    let counter = 3;
                     let speech = new SpeechSynthesisUtterance();
                     speech.lang = "en";
                     voices = window.speechSynthesis.getVoices();
+                    let rotate_index = voices.length;
                     speech.rate = 0.8;
 
                     document.querySelector("#say-word").addEventListener("click", () => {
-                        counter += 1;
-                        voice_counter = counter % voices.length;
-                        speech.voice = voices[voice_counter];
+                        rotate_index += 1;
+                        voice_rotation = rotate_index % voices.length;
+                        speech.voice = voices[voice_rotation];
                         speech.text = @json(auth()->user()->next_word);
                         window.speechSynthesis.speak(speech);
                     });
