@@ -10,31 +10,23 @@
             <div class="justify-center grid">
                 <div class="grid grid-cols-3 md:grid-cols-6">
                     @foreach ($pokemon as $p)
-                        <div class="m-4" x-data="{'isModalOpen': false}" x-on:keydown.escape="isModalOpen=false">
-                            <div @click="isModalOpen = true">
-                                <img src="{{$p->image}}" />
-                                <p>{{ $p->name }}</p>
-                                <p>{{ $p->classification }}</p>
-                                <p class="text-yellow-500"><i class="fa-solid fa-coins"></i> {{ $p->coins }}</p>
-
-                                <div class="modal" role="dialog" tabindex="-1" x-show="isModalOpen" x-cloak x-transition>
-                                    
-                                    <form action="/pokemon/{{$p->id}}/buy" method="POST">
-                                        @csrf
-                                        <button 
-                                        type="submit" 
-                                        value="Buy" 
-                                        class="bg-laravel text-white rounded py-2 px-4 bg-black disabled:opacity-20" 
-                                        @if(auth()->user()->coins_remaining < $p->coins) disabled @endif
-                                        @if(auth()->user()->pokemons->find($p)) disabled @endif
-                                        >
-                                            Buy
-                                        </button>
-                                    </form>
-                                    <button aria-label="Close" @click="isModalOpen=false">✖</button>
-                                </div>
-                            </div>
-                            
+                        <div class="m-4">
+                            <img src="{{$p->image}}" />
+                            <p>{{ $p->name }}</p>
+                            <p>{{ $p->classification }}</p>
+                            <p class="text-yellow-500"><i class="fa-solid fa-coins"></i> {{ $p->coins }}</p>                                    
+                            <form action="/pokemon/{{$p->id}}/buy" method="POST">
+                                @csrf
+                                <button 
+                                type="submit" 
+                                value="Buy" 
+                                class="bg-laravel text-white rounded py-2 px-4 bg-black disabled:opacity-20" 
+                                @if(auth()->user()->coins_remaining < $p->coins) disabled @endif
+                                @if(auth()->user()->pokemons->find($p)) disabled @endif
+                                >
+                                    Buy
+                                </button>
+                            </form>
                         </div>
                     @endforeach
                 </div>
