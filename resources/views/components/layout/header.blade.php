@@ -1,5 +1,5 @@
-<nav class="flex justify-between items-center bg-sky-700 text-white p-4">
-    <a href="/">
+<nav class="grid sm:flex justify-center sm:justify-between items-center bg-sky-700 text-white p-4">
+    <a href="/" class="m-auto sm:m-0">
         <img class="w-48" src="{{asset('WordsRockLogo.png')}}" alt="" class="logo"/>
     </a>
     <ul class="flex space-x-6 mr-6 text-lg">
